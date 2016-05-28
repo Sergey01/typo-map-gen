@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Given a keyboard layout map (a list containing strings of character
+"""Given a keyboard layout map (a list/tuple containing strings of character
 for each row), returns a dictionary consisting of each character and the
 characters around it."""
 
@@ -14,13 +14,13 @@ us_qwerty = [
 # directly to the left, directly to the right,
 # below to the left, directly below, below to the right
 search_operations = (
-    [-1,-1], [-1,0], [-1, 1],
+    [-1, -1], [-1, 0], [-1, 1],
     [0, -1], [0, 1],
-    [1, -1], [1,0], [1, 1]
+    [1, -1], [1, 0], [1, 1]
     )
 
 def generate_positional_typo_map(keyboard_layout):
-    """Given a keyboard layout map (a list containing strings of character
+    """Given a keyboard layout map (a list/tuple containing strings of character
     for each row), returns a dictionary consisting of each character and the
     characters around it."""
     positional_typo_map = {}
@@ -30,6 +30,7 @@ def generate_positional_typo_map(keyboard_layout):
             current_pos = [row_number, position]    # curent location on keyboard_layout
             for search_op in search_operations:
                 # search_position results in [row number, character index]
+                # this is calculated by adding search_op values to current_pos values
                 search_position = [x + y for x, y in zip(search_op, current_pos)]
                 if -1 in search_position: # we don't want to use -1 as an index
                     continue
