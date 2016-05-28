@@ -1,5 +1,10 @@
+#!/usr/bin/env python
+"""Given a keyboard layout map (a list containing strings of character
+for each row), returns a dictionary consisting of each character and the
+characters around it."""
+
 us_qwerty = [
-'1234567890',
+'1234567890-',
 'qwertyuiop',
 'asdfghjkl',
 'zxcvbnm']
@@ -15,6 +20,9 @@ search_operations = (
     )
 
 def generate_positional_typo_map(keyboard_layout):
+    """Given a keyboard layout map (a list containing strings of character
+    for each row), returns a dictionary consisting of each character and the
+    characters around it."""
     positional_typo_map = {}
     for row_number, row in enumerate(keyboard_layout):
         for position, character in enumerate(row):
